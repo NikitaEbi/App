@@ -1,0 +1,74 @@
+@import "variables";
+@import "mixins";
+
+
+  * {
+    color: darken($mainColor, 20);
+  }
+
+  #form {
+      padding:30px;
+      text-align: center;
+      width:300px;
+      @include border(grey);
+      @include center(360px,310px);
+  }
+
+  input {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding:10px;
+    width:55%;
+    @include border;
+    transition:0.5s;
+
+    &[type="submit"]{
+      cursor: pointer;
+      width:100px;
+      background-color: $mainColor;
+      color:white;
+
+      &:hover{
+        background-color: darken($mainColor, 10);
+      }
+    }
+
+    &:not([type="submit"]){
+
+      &:focus{
+        width:60%;
+      }
+
+    }
+
+  }
+
+
+  #info{
+    padding: 50px;
+    width:400px;
+    @include center(500px,100px);
+    top:100px;
+  }
+
+  #data{
+
+      div{
+      margin: 10px auto;
+      padding: 10px;
+      @include border;
+      }
+      
+  }
+
+  #load{
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    margin-top: 40px;
+    @include load;
+    @include border($mainColor,5px,30px);
+    border-right: transparent;
+
+  }
