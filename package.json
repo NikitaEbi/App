@@ -1,0 +1,11 @@
+{
+  "name": "AppX",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git://github.com/NikitaEbi/App",
+  "author": "NikitaEbi <nikita@ebiworks.com>",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
+}
