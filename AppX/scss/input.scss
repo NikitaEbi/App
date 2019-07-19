@@ -1,0 +1,29 @@
+input {
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  padding:10px;
+  width:55%;
+  @include border;
+  transition:0.5s;
+
+  &[type="submit"]{
+    cursor: pointer;
+    width:100px;
+    background-color: $mainColor;
+    color:white;
+
+    &:hover{
+      background-color: darken($mainColor, 10);
+    }
+  }
+
+  &:not([type="submit"]){
+
+    &:focus{
+      width:60%;
+    }
+
+  }
+
+}
