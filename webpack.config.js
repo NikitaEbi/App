@@ -28,8 +28,8 @@ module.exports = {
         ]
       },
       {
-       test: /\.scss$/,
-       use: [
+        test: /\.scss$/,
+        use: [
           'vue-style-loader',
           'css-loader',
           'sass-loader'
