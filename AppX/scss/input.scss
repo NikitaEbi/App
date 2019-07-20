@@ -11,7 +11,7 @@ input {
     cursor: pointer;
     width:100px;
     background-color: $mainColor;
-    color:white;
+    color:$textColor;
 
     &:hover{
       background-color: darken($mainColor, 10);
