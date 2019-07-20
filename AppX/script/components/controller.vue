@@ -1,7 +1,7 @@
 <template>
   <div>
     <login v-if = "IsActive" @login = "login" ref = "login"></login>
-    <info v-else ref = "info" @exit = "exit"></info>
+    <info v-else @exit = "exit" ref = "info"></info>
     <load ref = "load"></load>
   </div>
 </template>
@@ -21,31 +21,38 @@
       },
 
       methods: {
-        login(){
+        login: async function(){
           this.IsActive = false;
-          this.getBenes();
+
+          var loadCircle = this.$refs.load;
+          loadCircle.Start();
+
+          const result = await this.getBenes();
+
+          var info = this.$refs.info;
+          info.Clear();
+          info.SetData(result['data']['rows']);
+
+          loadCircle.End();
         },
 
         exit: async function(){
           this.IsActive = true;
+
           await req('login/logout');
+
           this.$refs.login.Clear();
-          
+
         },
 
         getBenes: async function(){
-
-            var loadCircle = this.$refs.load;
-            loadCircle.Start();
 
             const result = await req('beneficiaries/getList', {
               sort: 'nickname'
             })
 
-            this.$refs.info.Clear();
-            this.$refs.info.SetData(result['data']['rows']);
+            return result;
 
-            loadCircle.End();
         }
       },
 

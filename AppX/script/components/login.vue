@@ -36,25 +36,22 @@
 
        startLogin: async function(){
           var loadCircle = this.$refs.loadCircle;
+
           loadCircle.Start();
 
            const result = await req('login/submit', {
                userName: this.login,
                password: this.password,
                customerId: this.customerId
-           })
+           });
 
-           if(typeof result.err !== 'undefined'){
-             loadCircle.End();
+           if(typeof result.err !== 'undefined')
               this.error = result.err;
-           }
-           else {
-            // this.Hidden();
-             loadCircle.End();
+           else
              this.$emit('login');
-             //info.Hidden();
-            // getBenes();
-           }
+
+
+           loadCircle.End();
        }
 
      },

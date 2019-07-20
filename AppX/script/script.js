@@ -1,4 +1,3 @@
-import req from './sender.js'
 import Vue from 'vue'
 import controller from './components/controller.vue'
 
