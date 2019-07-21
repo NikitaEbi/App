@@ -2,7 +2,11 @@
   <div class="info">
        <input type="submit" value="Выйти" @click="Exit()">
        <div>
-          <my-table :data = "message"></my-table>
+          <my-table
+          :data = "message"
+          :Search = "true"
+          :Sort = "true"
+          />
        </div>
   </div>
 </template>
@@ -46,6 +50,10 @@ import table from './table.vue';
   .info{
     padding: 50px 50px 50px 0px;
     top:100px;
+
+    input[type = "submit"]{
+      @include input;
+    }
   }
 
 </style>

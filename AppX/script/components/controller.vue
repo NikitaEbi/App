@@ -1,8 +1,8 @@
 <template>
   <div>
-    <load ref = "load"></load>
-    <login v-if = "IsActive" @login = "login" ref = "login"></login>
-    <info v-else @exit = "exit" ref = "info"></info>
+    <load ref = "load"/>
+    <login v-if = "IsActive" @login = "login" ref = "login"/>
+    <info v-else @exit = "exit" ref = "info"/>
   </div>
 </template>
 

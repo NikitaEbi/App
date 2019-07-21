@@ -7,7 +7,7 @@
        <input type="submit" value="Вход" @click="startLogin">
        <p>{{error}}</p>
     </div>
-    <load ref = "loadCircle"></load>
+    <load ref = "loadCircle"/>
   </div>
 </template>
 
@@ -72,5 +72,9 @@
       width:300px;
       @include border(grey);
       @include center(360px,310px);
+
+      input{
+        @include input;
+      }
   }
 </style>

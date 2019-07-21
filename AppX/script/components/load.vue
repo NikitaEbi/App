@@ -37,5 +37,9 @@
     @include border($mainColor,5px,30px);
     border-right: transparent;
 
+    input{
+      @include input;
+    }
+
   }
 </style>

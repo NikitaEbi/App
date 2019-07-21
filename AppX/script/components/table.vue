@@ -1,4 +1,12 @@
 <template>
+
+  <div>
+  <search-field
+    v-if = "Search"
+    :data = "data"
+    @search = "search($event)"
+    @empty = "endSearch"
+  />
   <table class = "table">
     <tr class = "first">
       <td v-for="(value,key) in data[0]" @click = "sort(key)">
@@ -6,13 +14,16 @@
         <div class = "arrow" v-if = "sortKey == key"> {{ arrow }} </div>
       </td>
     </tr>
-    <tr v-for="lines in data">
+    <tr v v-for="lines in (searching) ? dataSearch : data">
       <td v-for="elem in lines"> {{ elem }} </td>
     </tr>
   </table>
+  </div>
 </template>
 
 <script>
+    import Search from './search.vue';
+
     export default {
 
       data(){
@@ -20,18 +31,27 @@
           sortKey: "",
           reverse: false,
           isSort: [],
-          arrow: "↓"
+          arrow: "↓",
+          searching: false,
+          dataSearch: this.data
         }
       },
 
       props:{
-        data: Array
+        data: Array,
+        Search: Boolean,
+        Sort: Boolean
       },
 
       methods: {
 
         sort(key) {
+
+          if(!this.Sort)
+            return;
+
           var i = this.sortKey == key && this.reverse ? true : false;
+          var mass = this.searching ? this.dataSearch : this.data;
 
           this.sortKey = key;
 
@@ -39,18 +59,28 @@
 
             this.arrow = "↑";
             this.reverse = false;
-            this.data.reverse();
+            mass.reverse();
 
           }else{
 
-            if(this.isNumericColumn(this.data,key))
-              this.data.sort(this.templateNumber);
+            if(this.isNumericColumn(mass,key))
+              mass.sort(this.templateNumber);
             else
-              this.data.sort(this.templateString);
+              mass.sort(this.templateString);
 
             this.arrow = "↓";
             this.reverse = true;
           }
+        },
+
+        search(data){
+          this.searching = true;
+          this.dataSearch = data;
+          this.sortKey = "";
+        },
+
+        endSearch(){
+          this.searching = false;
         },
 
         templateNumber(a,b){
@@ -82,6 +112,10 @@
 
           return isNumber;
         }
+      },
+
+      components: {
+        'search-field': Search
       }
 
     }

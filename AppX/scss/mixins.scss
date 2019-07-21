@@ -1,4 +1,4 @@
-@import "../../scss/variables";
+@import "./variables";
 
 @mixin border($color: $mainColor, $size: 1px, $radius: 10px){
   border: $size solid $color;
