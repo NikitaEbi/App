@@ -31,10 +31,7 @@
       methods: {
 
         sort(key) {
-          var i = false;
-
-          if(this.sortKey == key && this.reverse)
-            i = true;
+          var i = this.sortKey == key && this.reverse ? true : false;
 
           this.sortKey = key;
 
