@@ -44,7 +44,7 @@ import table from './table.vue';
   @import "../../scss/input";
 
   .info{
-    padding: 50px;
+    padding: 50px 50px 50px 0px;
     top:100px;
   }
 
