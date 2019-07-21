@@ -1,7 +1,7 @@
 <template>
   <div class="info">
        <input type="submit" value="Выйти" @click="Exit()">
-       <div id="data">
+       <div>
           <my-table :data = "message"></my-table>
        </div>
   </div>

@@ -1,7 +1,10 @@
 <template>
   <table class = "table">
     <tr class = "first">
-      <td v-for="(value,key) in data[0]" @click = "sort(key)">{{key}} <div class = "arrow" v-if = "sortKey == key"> {{arrow}} </div></td>
+      <td v-for="(value,key) in data[0]" @click = "sort(key)">
+        {{ key }}
+        <div class = "arrow" v-if = "sortKey == key"> {{ arrow }} </div>
+      </td>
     </tr>
     <tr v-for="lines in data">
       <td v-for="elem in lines"> {{ elem }} </td>
@@ -35,16 +38,19 @@
 
           this.sortKey = key;
 
-          if(this.isNumericColumn(this.data,key))
-            this.data.sort(this.templateNumber);
-          else
-            this.data.sort(this.templateString);
-
           if(i){
+
             this.arrow = "↑";
             this.reverse = false;
             this.data.reverse();
+
           }else{
+
+            if(this.isNumericColumn(this.data,key))
+              this.data.sort(this.templateNumber);
+            else
+              this.data.sort(this.templateString);
+
             this.arrow = "↓";
             this.reverse = true;
           }
