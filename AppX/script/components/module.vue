@@ -1,5 +1,5 @@
 <template>
-  <div class="holding">
+  <div class="modul">
     <load class = "load" v-if = "load"/>
        <div>
           <my-table
@@ -12,9 +12,9 @@
 </template>
 
 <script type="text/javascript">
-import table from './table.vue';
-import load from './load.vue'
-import req from '../sender.js'
+  import table from './table.vue';
+  import load from './load.vue'
+  import req from '../sender.js'
 
   export default {
     data() {
@@ -22,6 +22,10 @@ import req from '../sender.js'
         message: [],
         load: false
       }
+    },
+
+    props: {
+      url: String
     },
 
     created() {
@@ -32,9 +36,7 @@ import req from '../sender.js'
       Start: async function(){
         this.load = true;
 
-        const result = await req('reports/holding/getList', {
-          sort: 'dealNumber'
-        });
+        const result = await req(this.url);
 
         this.message = result['data']['rows'];
 
@@ -49,20 +51,3 @@ import req from '../sender.js'
   }
 
 </script>
-
-<style media="screen" lang = "scss">
-
-  @import "../../scss/mixins";
-
-  .holding{
-    padding: 50px 50px 50px 0px;
-    top:100px;
-
-    .load{
-      position: absolute;
-      left:48.5%;
-      top:33px;
-    }
-  }
-
-</style>

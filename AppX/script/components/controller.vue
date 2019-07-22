@@ -13,8 +13,12 @@
         </button>
       </div>
       <div v-else>
-        <info v-if = "modules['info'].active"/>
-        <holding v-if = "modules['holding'].active"/>
+        <modules url = "beneficiaries/getList" v-if = "modules['info'].active"/>
+        <modules url = "reports/holding/getList" v-if = "modules['holding'].active"/>
+        <modules url = "reports/forwards/getList" v-if = "modules['forwards'].active"/>
+        <modules url = "reports/orders/getList" v-if = "modules['orders'].active"/>
+        <modules url = "tracker/getList" v-if = "modules['tracker'].active"/>
+        <modules url = "reports/accountActivity/getList" v-if = "modules['accountActivity'].active"/>
       </div>
     </div>
   </div>
@@ -25,8 +29,7 @@
     import load from './load.vue'
     import req from '../sender.js'
 
-    import info from './info.vue'
-    import holding from './holding.vue'
+    import modules from './module.vue'
 
 
     export default {
@@ -44,6 +47,22 @@
             'holding': {
               active:false,
               text: "Список Holding"
+            },
+            'forwards': {
+              active: false,
+              text: "Список Forwards"
+            },
+            'orders': {
+              active: false,
+              text: "Список Orders"
+            },
+            'tracker': {
+              active: false,
+              text: "Список Tracker"
+            },
+            'accountActivity': {
+              active: false,
+              text: "Список accountActivity"
             }
           },
         }
@@ -91,8 +110,7 @@
 
       components: {
         login,
-        info,
-        holding,
+        modules,
         load
       }
     }
@@ -100,6 +118,17 @@
 
 <style lang = "scss">
   @import "../../scss/input";
+
+  .modul{
+    padding: 50px 50px 50px 0px;
+    top:100px;
+
+    .load{
+      position: absolute;
+      left:48.5%;
+      top:33px;
+    }
+  }
 
   .controller{
     .inputs{

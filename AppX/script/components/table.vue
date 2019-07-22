@@ -138,8 +138,8 @@
   .table{
 
     border-collapse: collapse;
-    padding:0xp;
-    margin:0px;
+    padding:0px;
+    margin:auto;
 
     .arrow {
       position:absolute;
