@@ -85,6 +85,7 @@
 
         endSearch(){
           this.searching = false;
+          this.sortKey = "";
         },
 
         templateNumber(a,b){
