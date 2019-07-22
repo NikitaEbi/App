@@ -13,12 +13,7 @@
         </button>
       </div>
       <div v-else>
-        <modules url = "beneficiaries/getList" v-if = "modules['info'].active"/>
-        <modules url = "reports/holding/getList" v-if = "modules['holding'].active"/>
-        <modules url = "reports/forwards/getList" v-if = "modules['forwards'].active"/>
-        <modules url = "reports/orders/getList" v-if = "modules['orders'].active"/>
-        <modules url = "tracker/getList" v-if = "modules['tracker'].active"/>
-        <modules url = "reports/accountActivity/getList" v-if = "modules['accountActivity'].active"/>
+        <modules v-for = "module in modules" :url = "module.url" v-if = "module.active && module.drawing"/>
       </div>
     </div>
   </div>
@@ -41,28 +36,40 @@
           load: false,
           modules:{
             'info': {
+              drawing: true,
               active: false,
-              text: "Список бенифициаров"
+              text: "Список бенифициаров",
+              url: "beneficiaries/getList"
             },
             'holding': {
+              drawing: true,
               active:false,
-              text: "Список Holding"
+              text: "Список Holding",
+              url: "reports/holding/getList"
             },
             'forwards': {
+              drawing: true,
               active: false,
-              text: "Список Forwards"
+              text: "Список Forwards",
+              url: "reports/forwards/getList"
             },
             'orders': {
+              drawing: true,
               active: false,
-              text: "Список Orders"
+              text: "Список Orders",
+              url: "reports/orders/getList"
             },
             'tracker': {
+              drawing: true,
               active: false,
-              text: "Список Tracker"
+              text: "Список Tracker",
+              url: "tracker/getList"
             },
             'accountActivity': {
+              drawing: true,
               active: false,
-              text: "Список accountActivity"
+              text: "Список accountActivity",
+              url: "reports/accountActivity/getList"
             }
           },
         }
