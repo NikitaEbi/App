@@ -30,6 +30,10 @@
         }
       },
 
+      created() {
+        this.Clear();
+      },
+
       methods: {
          Clear(){
            this.login = "";

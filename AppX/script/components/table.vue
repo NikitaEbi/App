@@ -130,9 +130,9 @@
 
 
    .search{
-      position:absolute;
-      right:10px;
-      top: 95px;
+      display:block;
+      margin:auto;
+      margin-bottom:30px;
     }
 
   .table{

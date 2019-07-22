@@ -51,3 +51,15 @@
   }
 
 </script>
+
+<style lang="scss">
+  .modul{
+    top:100px;
+
+    .load{
+      position: absolute;
+      left:48.5%;
+      top:30%;
+    }
+  }
+</style>

@@ -1,11 +1,11 @@
 <template>
   <div class = "controller">
     <load v-if = "load"/>
-    <login v-if = "IsActive" @login = "login" ref = "login"/>
+    <login v-if = "IsActive" @login = "login"/>
     <div v-else>
       <div class = "inputs">
         <input type="submit" value="Выйти" @click="exit">
-        <input type="submit" value = "Назад" @click = "back" v-if = "!isLists">
+        <input type="submit" value = "Меню" @click = "back" v-if = "!isLists">
       </div>
       <div v-if = "isLists" class = "list">
         <button v-for = "(value,key) in modules" @click = "entryModule(key)">
@@ -38,7 +38,7 @@
             'info': {
               drawing: true,
               active: false,
-              text: "Список бенифициаров",
+              text: "Список Beneficiaries",
               url: "beneficiaries/getList"
             },
             'holding': {
@@ -89,9 +89,6 @@
           this.IsActive = true;
 
           await req('login/logout');
-
-          this.$refs.login.Clear();
-
         },
 
         back(){
@@ -126,17 +123,6 @@
 <style lang = "scss">
   @import "../../scss/input";
 
-  .modul{
-    padding: 50px 50px 50px 0px;
-    top:100px;
-
-    .load{
-      position: absolute;
-      left:48.5%;
-      top:33px;
-    }
-  }
-
   .controller{
     .inputs{
 
@@ -158,15 +144,21 @@
         button{
           display:block;
           margin:auto;
-          margin-top: 15px;
           cursor:pointer;
           width:400px;
-          padding: 5px 20px;
+          padding: 15px 20px;
           background-color: $textColor;
           color: $mainColor;
-          border: 1px solid black;
+          border: none;
+          border-right: 2px solid black;
+          border-left: 2px solid black;
           font-size:15px;
           font-weight: bold;
+
+          &:hover{
+            border-right: 2px solid orange;
+            border-left: 2px solid orange;
+          }
         }
     }
   }
