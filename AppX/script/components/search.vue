@@ -64,9 +64,6 @@
   .search{
     width:200px;
     height:15px;
-    position:absolute;
-    right:10px;
-    top: 100px;
     border-radius:10px;
     border: 1px solid black;
     padding:5px;

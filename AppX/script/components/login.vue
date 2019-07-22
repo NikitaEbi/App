@@ -5,9 +5,11 @@
        <input type="password" placeholder="Пароль" v-model="password" required>
        <input type="text" placeholder="customerId" v-model="customerId" required>
        <input type="submit" value="Вход" @click="startLogin">
-       <p>{{error}}</p>
+       <p>
+         {{error}}
+       </p>
     </div>
-    <load ref = "loadCircle"/>
+    <load v-if = "load"/>
   </div>
 </template>
 
@@ -21,6 +23,7 @@
         return{
           password: "",
           login: "",
+          load: false,
           customerId: "",
           error: "",
           IsLoging: false
@@ -35,9 +38,7 @@
        },
 
        startLogin: async function(){
-          var loadCircle = this.$refs.loadCircle;
-
-          loadCircle.Start();
+          this.load = true;
 
            const result = await req('login/submit', {
                userName: this.login,
@@ -51,7 +52,7 @@
              this.$emit('login');
 
 
-           loadCircle.End();
+           this.load = false;
        }
 
      },

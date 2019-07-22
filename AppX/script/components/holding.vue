@@ -1,5 +1,5 @@
 <template>
-  <div class="info">
+  <div class="holding">
     <load class = "load" v-if = "load"/>
        <div>
           <my-table
@@ -30,18 +30,16 @@ import req from '../sender.js'
 
     methods: {
       Start: async function(){
-
         this.load = true;
 
-        const result = await req('beneficiaries/getList', {
-          sort: 'nickname'
+        const result = await req('reports/holding/getList', {
+          sort: 'dealNumber'
         });
 
         this.message = result['data']['rows'];
 
         this.load = false;
       }
-
     },
 
     components: {
@@ -56,7 +54,7 @@ import req from '../sender.js'
 
   @import "../../scss/mixins";
 
-  .info{
+  .holding{
     padding: 50px 50px 50px 0px;
     top:100px;
 

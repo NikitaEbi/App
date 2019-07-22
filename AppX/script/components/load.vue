@@ -1,28 +1,6 @@
 <template>
-  <div class = "load" v-if="IsActive"> </div>
+  <div class = "load"> </div>
 </template>
-
-<script>
-  export default {
-
-    data() {
-      return{
-        IsActive: false
-      }
-    },
-
-    methods: {
-      Start() {
-        this.IsActive = true;
-      },
-
-      End(){
-        this.IsActive = false
-      }
-    }
-  }
-
-</script>
 
 <style lang = "scss">
   @import "../../scss/mixins";

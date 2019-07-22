@@ -1,23 +1,27 @@
 <template>
-
   <div>
-  <search-field
-    v-if = "Search"
-    :data = "data"
-    @search = "search($event)"
-    @empty = "endSearch"
-  />
-  <table class = "table">
-    <tr class = "first">
-      <td v-for="(value,key) in data[0]" @click = "sort(key)">
-        {{ key }}
-        <div class = "arrow" v-if = "sortKey == key"> {{ arrow }} </div>
-      </td>
+    <search-field
+      class = "search"
+      v-if = "Search"
+      :data = "data"
+      @search = "search($event)"
+      @empty = "endSearch"
+    />
+    <table class = "table">
+      <tr class = "first">
+        <td v-for="(value,key) in data[0]" @click = "sort(key)">
+          {{ key }}
+          <div class = "arrow" v-if = "sortKey == key">
+            {{ arrow }}
+          </div>
+        </td>
+      </tr>
+      <tr v v-for="lines in (searching) ? dataSearch : data">
+        <td v-for="elem in lines">
+          {{ elem }}
+        </td>
     </tr>
-    <tr v v-for="lines in (searching) ? dataSearch : data">
-      <td v-for="elem in lines"> {{ elem }} </td>
-    </tr>
-  </table>
+    </table>
   </div>
 </template>
 
@@ -123,6 +127,13 @@
 
 <style lang="scss">
 @import "../../scss/variables";
+
+
+   .search{
+      position:absolute;
+      right:10px;
+      top: 95px;
+    }
 
   .table{
 
