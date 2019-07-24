@@ -7,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname,'dist'),
     filename: "main.js"
   },
-  mode: 'development',
+  mode: 'production',
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {

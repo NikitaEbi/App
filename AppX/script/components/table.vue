@@ -37,7 +37,8 @@
           isSort: [],
           arrow: "↓",
           searching: false,
-          dataSearch: this.data
+          dataSearch: [],
+          dataObject: []
         }
       },
 

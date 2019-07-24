@@ -1,6 +1,12 @@
 <template>
   <div class = "controller">
     <load v-if = "load"/>
+    <popUp
+      :data = "modules"
+      @exit = "exit"
+      @menu = "back"
+      @choice = "entryModule($event)"
+      v-if = "!isLists && !IsActive"/>
     <login v-if = "IsActive" @login = "login"/>
     <div v-else>
       <div class = "inputs">
@@ -22,10 +28,11 @@
 <script>
     import login from './login.vue'
     import load from './load.vue'
+    import popUp from './popUpMenu.vue'
+
     import req from '../sender.js'
 
     import modules from './module.vue'
-
 
     export default {
 
@@ -104,10 +111,19 @@
 
           this.load = true;
 
-          this.modules[name].active = true;
+          for(var modul in this.modules){
+            this.modules[modul].active = false;
+          }
+
+          this.lastModule = name;
+
           this.isLists = false;
 
-          this.load = false;
+          // обманочка для v-for, бех этого раюотать не будет
+          setTimeout(() => {
+            this.modules[name].active = true;
+            this.load = false;
+          },1);
 
         }
       },
@@ -115,7 +131,8 @@
       components: {
         login,
         modules,
-        load
+        load,
+        popUp
       }
     }
 </script>
@@ -124,6 +141,7 @@
   @import "../../scss/input";
 
   .controller{
+
     .inputs{
 
       text-align: center;

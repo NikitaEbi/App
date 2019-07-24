@@ -25,15 +25,13 @@
 
         var result = [];
 
-        console.log(this.data);
-
         if(typeof this.data[0] == "object" || typeof this.data[0] == "array"){
 
           this.data.forEach( row => {
             var isFits = false;
 
             for(var i in row){
-              if(typeof row[i] == "string" && row[i].indexOf(this.text) + 1)
+              if(typeof row[i] == "string" && row[i].indexOf(this.text) == 0)
                 isFits = true;
 
             }
@@ -54,7 +52,6 @@
         }
 
         this.$emit('search',result);
-
 
       }
     }
